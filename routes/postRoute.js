@@ -7,6 +7,12 @@ router
   .post(postController.createPost)
   .get(postController.getAllPost);
 
-router.route("/posts/:id").get(postController.getPostById);
+router.get("/top-three", postController.getTopThreePost);
+
+router
+  .route("/posts/:id")
+  .get(postController.getPostById)
+  .put(postController.addLoveToPost)
+  .patch(postController.addCommentToPost);
 
 module.exports = router;

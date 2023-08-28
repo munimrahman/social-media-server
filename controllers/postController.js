@@ -1,4 +1,11 @@
-const { createOne, getAll, getOneById } = require("../services/postService");
+const {
+  createOne,
+  getAll,
+  getOneById,
+  getTopThree,
+  lovePost,
+  createComment,
+} = require("../services/postService");
 
 const createPost = async (req, res) => {
   try {
@@ -52,4 +59,63 @@ const getPostById = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getAllPost, getPostById };
+const getTopThreePost = async (req, res) => {
+  try {
+    const posts = await getTopThree();
+
+    res.status(200).json({
+      message: "success",
+      posts,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+const addLoveToPost = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const post = await lovePost(req.body, id);
+
+    res.status(200).json({
+      message: "success",
+      post,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+const addCommentToPost = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const post = await createComment(req.body, id);
+    res.status(200).json({
+      message: "success",
+      post,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+module.exports = {
+  createPost,
+  getAllPost,
+  getPostById,
+  getTopThreePost,
+  addLoveToPost,
+  addCommentToPost,
+};
