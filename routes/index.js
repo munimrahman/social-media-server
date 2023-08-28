@@ -1,9 +1,10 @@
 const express = require("express");
+const userRoute = require("./userRoute");
+const postRoute = require("./postRoute");
 
 const router = express.Router();
 
-router.use("/", (req, res) => {
-  res.json("Index Route");
-});
+router.use("/", userRoute);
+router.use("/", postRoute);
 
 module.exports = router;
