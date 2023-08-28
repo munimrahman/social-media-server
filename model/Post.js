@@ -24,6 +24,9 @@ const postSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    authorEmail: {
+      type: String,
+    },
   },
   {
     timestamps: true,

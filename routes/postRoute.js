@@ -9,6 +9,8 @@ router
 
 router.get("/top-three", postController.getTopThreePost);
 
+router.get("/user-posts", postController.getPostByEmail);
+
 router
   .route("/posts/:id")
   .get(postController.getPostById)

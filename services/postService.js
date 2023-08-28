@@ -22,6 +22,13 @@ const getAll = async () => {
   return res;
 };
 
+const getByEmail = async (authorEmail) => {
+  const res = await Post.find({ authorEmail })
+    .sort("-createdAt")
+    .populate("author", "name profilePhoto");
+  return res;
+};
+
 const getTopThree = async () => {
   const res = await Post.find({})
     .sort("-loves")
@@ -67,4 +74,5 @@ module.exports = {
   getTopThree,
   lovePost,
   createComment,
+  getByEmail,
 };

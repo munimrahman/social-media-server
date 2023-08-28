@@ -5,6 +5,7 @@ const {
   getTopThree,
   lovePost,
   createComment,
+  getByEmail,
 } = require("../services/postService");
 
 const createPost = async (req, res) => {
@@ -45,6 +46,24 @@ const getPostById = async (req, res) => {
   try {
     const id = req.params.id;
     const post = await getOneById(id);
+
+    res.status(200).json({
+      message: "success",
+      post,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+const getPostByEmail = async (req, res) => {
+  try {
+    const { email } = req.query;
+    const post = await getByEmail(email);
 
     res.status(200).json({
       message: "success",
@@ -118,4 +137,5 @@ module.exports = {
   getTopThreePost,
   addLoveToPost,
   addCommentToPost,
+  getPostByEmail,
 };
