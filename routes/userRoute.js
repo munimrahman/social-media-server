@@ -2,15 +2,16 @@ const express = require("express");
 const userController = require("../controllers/userController");
 const router = express.Router();
 
-router.post("/users", userController.createUser);
-router.get("/users", (req, res) => {
-  res.send("Get All Users");
-});
+router
+  .route("/users")
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
 
-// router.get("/signup/confirmation/:token", userController.confirmEmail);
+router.get("/current-user", userController.getUserByEmail);
 
-// router.post("/login", userController.login);
-
-// router.get("/me", verifyToken, userController.getMe);
+router
+  .route("/users/:id")
+  .get(userController.getUserById)
+  .put(userController.updateUserById);
 
 module.exports = router;
