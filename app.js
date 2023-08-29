@@ -3,7 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const notFoundHandler = require("./utils/notFoundHandler");
 const globalErrorHandler = require("./utils/globalErrorHandler");
-const router = require("./routes");
+const router = require("./api");
 
 const app = express();
 

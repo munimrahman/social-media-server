@@ -1,4 +1,4 @@
-const generateToken = require("../routes/generateToken");
+const generateToken = require("../api/generateToken");
 const {
   createOne,
   getOneById,

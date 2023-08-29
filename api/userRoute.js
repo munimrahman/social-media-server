@@ -8,8 +8,8 @@ router
   .post(userController.createUser);
 
 router.route("/register").post(userController.createUser);
-router.route("/sign-up").post((req, res) => {
-  res.json(req.body);
+router.route("/sign-up").get((req, res) => {
+  res.json("Test Run");
 });
 router.route("/log-in").post(userController.logIn);
 
