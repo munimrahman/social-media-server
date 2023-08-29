@@ -7,6 +7,9 @@ router
   .get(userController.getAllUsers)
   .post(userController.createUser);
 
+router.route("/register").post(userController.createUser);
+router.route("/log-in").post(userController.logIn);
+
 router.get("/current-user", userController.getUserByEmail);
 
 router
