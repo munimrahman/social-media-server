@@ -8,6 +8,9 @@ router
   .post(userController.createUser);
 
 router.route("/register").post(userController.createUser);
+router.route("/sign-up").post((req, res) => {
+  res.json(req.body);
+});
 router.route("/log-in").post(userController.logIn);
 
 router.get("/current-user", userController.getUserByEmail);
